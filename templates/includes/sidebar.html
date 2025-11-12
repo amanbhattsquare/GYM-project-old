@@ -1,19 +1,19 @@
 {% load static %}
 <nav class="sidebar sidebar-offcanvas " id="sidebar">
   <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
-    <a class="sidebar-brand brand-logo" href="index.html">
-      <img src="{% static 'images/BhattSqureLogo.jpeg' %}" alt="BhattSquare Logo" />
+    <a class="sidebar-brand brand-logo" href="{% url 'dashboard' %}">
+      <img src="{% static 'images/gym.png' %}" alt="BhattSquare Logo" />
     </a>
-    <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html">
-      <img src="{% static 'images/BhattSqureLogo.jpeg' %}" alt="Mini Logo" />
+    <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="{% url 'dashboard' %}">
+      <img src="{% static 'images/gym.png' %}" alt="Mini Logo" />
     </a>
   </div>
 
   <ul class="nav">
 
     <!-- 1. Dashboard -->
-    <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+    <li class="nav-item {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+      <a class="nav-link" href="{% url 'dashboard' %}">
         <i class="mdi mdi-home menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
@@ -35,32 +35,17 @@
       </div>
     </li>
 
-    <!-- 3. Registration -->
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#registration" aria-expanded="false" aria-controls="registration">
-        <i class="mdi mdi-account-plus menu-icon"></i>
-        <span class="menu-title">Registration</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="registration">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"><a class="nav-link" href="pages/registration/all.html">All Registrations</a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/registration/new.html">New Registration</a></li>
-        </ul>
-      </div>
-    </li>
-
     <!-- 4. Members -->
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#members" aria-expanded="false" aria-controls="members">
+    <li class="nav-item {% if request.resolver_match.url_name == 'member_list' or request.resolver_match.url_name == 'add_new_member' or request.resolver_match.url_name == 'member_profile' or request.resolver_match.url_name == 'edit_member' %}active{% endif %}">
+      <a class="nav-link" data-toggle="collapse" href="#members" aria-expanded="{% if request.resolver_match.url_name == 'member_list' or request.resolver_match.url_name == 'add_new_member' or request.resolver_match.url_name == 'member_profile' or request.resolver_match.url_name == 'edit_member' %}true{% else %}false{% endif %}" aria-controls="members">
         <i class="mdi mdi-account-multiple menu-icon"></i>
         <span class="menu-title">Members</span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="members">
+      <div class="collapse {% if request.resolver_match.url_name == 'member_list' or request.resolver_match.url_name == 'add_new_member' or request.resolver_match.url_name == 'member_profile' or request.resolver_match.url_name == 'edit_member' %}show{% endif %}" id="members">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"><a class="nav-link" href="pages/members/all.html">All Members</a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/members/add.html">Add Member</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'member_list' %}active{% endif %}" href="{% url 'member_list' %}">All Members</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'add_new_member' %}active{% endif %}" href="{% url 'add_new_member' %}">Add Member</a></li>
           <li class="nav-item"><a class="nav-link" href="pages/members/expiring.html">Expiring Soon</a></li>
         </ul>
       </div>

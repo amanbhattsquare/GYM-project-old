@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit Member</h4>
+            <p class="card-description"> Basic form elements </p>
+            <form method="post" enctype="multipart/form-data" class="forms-sample">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_first_name">First Name</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_last_name">Last Name</label>
+                    {{ form.last_name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_email">Email address</label>
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    <label for="id_mobile_number">Mobile Number</label>
+                    {{ form.mobile_number }}
+                </div>
+                <div class="form-group">
+                    <label for="id_age">Age</label>
+                    {{ form.age }}
+                </div>
+                <div class="form-group">
+                    <label for="id_gender">Gender</label>
+                    {{ form.gender }}
+                </div>
+                <div class="form-group">
+                    <label for="id_date_of_birth">Date of Birth</label>
+                    {{ form.date_of_birth }}
+                </div>
+                <div class="form-group">
+                    <label for="id_address">Address</label>
+                    {{ form.address }}
+                </div>
+                <div class="form-group">
+                    <label for="id_area">Area</label>
+                    {{ form.area }}
+                </div>
+                <div class="form-group">
+                    <label for="id_city">City</label>
+                    {{ form.city }}
+                </div>
+                <div class="form-group">
+                    <label for="id_state">State</label>
+                    {{ form.state }}
+                </div>
+                <div class="form-group">
+                    <label for="id_pincode">Pincode</label>
+                    {{ form.pincode }}
+                </div>
+                <div class="form-group">
+                    <label for="id_profession">Profession</label>
+                    {{ form.profession }}
+                </div>
+                <div class="form-group">
+                    <label>Profile Picture</label>
+                    {{ form.profile_picture }}
+                </div>
+                <div class="form-group">
+                    <label>Signature</label>
+                    {{ form.sign }}
+                </div>
+                <div class="form-group">
+                    <label for="id_identity_type">Identity Type</label>
+                    {{ form.identity_type }}
+                </div>
+                <div class="form-group">
+                    <label for="id_identity_no">Identity Number</label>
+                    {{ form.identity_no }}
+                </div>
+                <div class="form-group">
+                    <label>Identity Document</label>
+                    {{ form.identity_document_image }}
+                </div>
+                <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+                <button class="btn btn-light">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

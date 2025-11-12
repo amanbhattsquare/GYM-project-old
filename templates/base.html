@@ -17,10 +17,19 @@
 </head>
 
 <body>
-  {% comment %} <h1>Welcome To The Bhatt GYM Managment Softwere</h1> {% endcomment %}
-  {% block content %}
+  <div class="container-scroller">
+    {% include 'includes/sidebar.html' %}
+    <div class="container-fluid page-body-wrapper">
+      {% include 'includes/top-nav.html' %}
+      <div class="main-panel">
+        <div class="content-wrapper">
+          {% block content %}
 
-  {% endblock content %}
+          {% endblock content %}
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- plugins:js --> 
   <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script> 
